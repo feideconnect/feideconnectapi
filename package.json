@@ -1,0 +1,22 @@
+{
+  "name": "feideconnectapi",
+  "version": "1.0.0",
+  "description": "ExpressJS Middleware layer that easily lets you use Feide Connect for authentication and authorization.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "basic-auth-parser": "0.0.2"
+  },
+  "keywords": [
+    "authentication",
+    "authorization",
+    "api",
+    "rest",
+    "oauth",
+    "feide"
+  ],
+  "author": "Andreas Åkre Solberg",
+  "license": "ISC"
+}
