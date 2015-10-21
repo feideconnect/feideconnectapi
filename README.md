@@ -18,10 +18,11 @@ Point your API endpoint in Dashboard to your ExpressJS API.
 
 And initialize FeideConnectAPI using the password that was generated for trust between Feide Connect API Gatekeeper and your ExpressJS API:
 
-
+```javascript
 	var fc = new FeideConnectAPI({
 	    "password": "30d63d9b-3574-4832-be37-0c93121fca21"
 	});
+```
 
 FeideConnectAPI comes with several middlewares. First the optional `cors()` middleware, and then the important `setup()` middleware that establish trust and parses the incoming request headers.
 
@@ -32,6 +33,7 @@ A typical use is this:
 
 Within a request handler, you may access some information:
 
+```javascript
 	var router = express.Router();
 	router.get('/', function(req, res) {
 	    res.json({ 
@@ -41,11 +43,12 @@ Within a request handler, you may access some information:
 	        "withTheseSubScopes": req.feideconnect.scopes
 	    });
 	});
-
+```
 
 
 You may easily use the `policy()` middleware to apply some kind of authorization policy before the request is dealt with.
 
+```javascript
 	router.get('/write', fc.policy({requireScopes: ["write"], requireUserUnlessScopes: ["clientonly"]}), function(req, res) {
 	    res.json({ 
 	        message: 'This endpoint is slightly more protected',
@@ -53,6 +56,7 @@ You may easily use the `policy()` middleware to apply some kind of authorization
 	        "usingClient": req.feideconnect.clientid
 	    });
 	});
+```
 
 The `policy()` middleware takes an object as input and the object properties can be one of:
 
@@ -63,11 +67,11 @@ The `policy()` middleware takes an object as input and the object properties can
 
 A simpler example:
 
-
+```javascript
 	router.get('/', fc.policy({requireUser: true}), function(req, res) {
 	    res.json({ 
 	        message: 'hooray! welcome to our api!',
 	        "youMustBe": req.feideconnect.userid
 	    });
 	});
-
+```
