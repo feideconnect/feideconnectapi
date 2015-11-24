@@ -1,6 +1,6 @@
 {
   "name": "feideconnectapi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "ExpressJS Middleware layer that easily lets you use Feide Connect for authentication and authorization.",
   "main": "index.js",
   "scripts": {
